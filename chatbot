@@ -1,0 +1,84 @@
+import time
+now=time.ctime()
+qna={
+    "hi":"hey how can i help you?",
+    "hii":"hey how can i help you?",
+    "hello":"hey how can i help you?",
+    "what is chatbot":"lol chatbot is programmed AI which helps people to come out from trouble",
+    "who made you":"i made by you",
+    "what is your age":"i am 1 day old",
+    "what time is it": now,
+    "where’s the it help desk":"2nd floor; room 201 (two rights after you get out of the elevator",
+    "Can i come in at noon?":"SureWhat’s the nature of your problem?",
+    "I have a cracked laptop screen":"For verification purposes, can I get the last four digits of your employee ID?",
+    "1234":"Got it, we’ll see you then to take a look at your screen",
+    "how long does it take to fix a screen":"Laptop screen repairs typically take 4 hours.",
+    "what do I need to bring with me for a screen repair":"For a laptop screen repair, please bring your employee badge, laptop, and VPN fob.",
+    "how do I access my documents while my laptop is being repaired":"You can use Amazon Workdocs to access your documents.",
+    "can I use workdocs on my tablet":"Yes. Users can access Amazon WorkDocs using free applications for iPad, Kindle Fire, and Android tablets that you can download from iTunes, Amazon Appstore for Android, and Google Play. Users can also access Amazon WorkDocs using the web browser on any mobile device.",
+    "when does the help desk close":"Our hours are from 11 AM to 2 PM.",
+    "is there a coffee shop nearby":"There is one on the third floor and it’s open from 8 AM to 4 PM daily.",
+}
+
+
+import tkinter as t
+from tkinter import messagebox
+root=t.Tk("")
+root.geometry("500x400")
+a_var=t.StringVar()
+root.iconbitmap("robot.ico")
+BG_GRAY = "#ABB2B9"
+BG_COLOR = "#17202A"
+TEXT_COLOR = "#EAECEE"
+
+FONT = "Helvetica 14"
+FONT_BOLD = "Helvetica 13 bold"
+
+
+
+def send():
+   
+   
+    global a
+    a = a_var.get()
+
+
+    if a not in qna:
+        t.messagebox.showinfo(title="Chatbot reply:", message="Sorry! I didn't understand that :(")
+  
+    else:
+        t.messagebox.showinfo(title="Chatbot reply:", message=qna[a])
+
+
+
+      
+def Close():
+    root.destroy()
+   
+name_label = t.Label(root, bg=BG_COLOR, fg=TEXT_COLOR, text="Welcome", font=FONT_BOLD, pady=10, width=50, height=2).grid(row=0)
+
+name_label = t.Label(root, text = 'Hey! How can i help you?', font=('calibre',18, 'bold' ),fg='Red')
+name_label.place(x = 80, y = 80)
+
+
+name_label1 = t.Label(root, text = 'Ask me:', font=('calibre',16, 'bold'),fg = 'blue')
+name_label1.place(x = 80, y = 150)
+name_entry1 = t.Entry(root,textvariable = a_var, font=('calibre',16,'normal'))
+name_entry1.place(x = 175, y = 150)
+
+
+sub_btn=t.Button(root,text = 'Send', fg = 'red', command = send)
+
+
+sub_btn.place(x = 410, y = 150)
+
+
+sub_btn=t.Button(root,text = 'Close', fg = 'red', command = Close)
+
+
+sub_btn.place(x = 250, y = 250)
+
+
+root.mainloop()
+
+
